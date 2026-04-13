@@ -1,0 +1,49 @@
+---
+import JAM from "../../assets/L_JAM.png";
+import raya from "../../assets/raya.png";
+import Clock from "../../components/Icon/Clock.svg";
+import Contact from "../../components/Icon/Contact.svg";
+import Location from "../../components/Icon/Location.svg";
+import Icon_Info from "../../components/Icon_Info.astro";
+// Informacion de los contactos
+const contactInfo = [
+  {
+    title: "Horario de atención",
+    lines: ["Lunes a Viernes: 8:00 - 17:00", "Sáb: 8:00 - 12:00"],
+    Icon: Clock,
+  },
+  {
+    title: "Dirección",
+    lines: ["Los Topacios #630 Chimba", "Antofagasta"],
+    Icon: Location,
+  },
+  {
+    title: "Contacto",
+    lines: ["francisco.avalo@jamincoser.cl"],
+    Icon: Contact,
+  },
+];
+---
+
+<article class="hidden lg:block bg-white">
+  <div
+    class="max-w-7xl mx-auto px-12 py-2 flex flex-wrap items-center justify-between gap-6"
+  >
+    <div class="flex items-center gap-1">
+      <img src={JAM.src} alt="logo" width="50px" height="40px" />
+      <img src={raya.src} alt="raya" width="1px" height="30px" />
+      <div class="text-[#EC5463] font-bold uppercase leading-none text-[11px]">
+        <p>Construcciones</p>
+        <p>Ingeniería y</p>
+        <p>Servicios</p>
+      </div>
+    </div>
+    <div class="flex items-center justify-center gap-1">
+      {
+        contactInfo.map((item, index) => (
+          <Icon_Info title={item.title} lines={item.lines} Icon={item.Icon} />
+        ))
+      }
+    </div>
+  </div>
+</article>

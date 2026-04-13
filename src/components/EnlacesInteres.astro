@@ -1,0 +1,227 @@
+---
+import Enlaces_Interes from "../assets/bg_Enlaces_interes.png";
+
+const enlaces = [
+    {
+        title: "Política Gestión\nIntegrado",
+        bg: "bg-gradient-to-r from-[#4C4C4C] to-[#1A1919]",
+        href: "#",
+    },
+    {
+        title: "Noticias",
+        bg: "bg-gradient-to-r from-[#F4E34F] to-[#B2A643]",
+        href: "#",
+    },
+    {
+        title: "Nuestro servicios",
+        bg: "bg-gradient-to-r from-[#752C2C] to-[#DB5353]",
+        href: "#",
+    },
+    {
+        title: "Contáctanos",
+        bg: "bg-gradient-to-r from-[#D9D9D9] to-[#737373]",
+        href: "#",
+    },
+];
+---
+
+<section class="relative w-full py-20 lg:py-28 bg-[#323232] overflow-hidden">
+    <div
+        class="absolute inset-0 opacity-20 pointer-events-none mix-blend-screen"
+    >
+        <img
+            src={Enlaces_Interes.src}
+            alt="Background"
+            class="w-full h-full object-cover"
+        />
+    </div>
+
+    <div
+        class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center"
+    >
+        <div class="w-full max-w-7xl">
+            <h2
+                class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-12 tracking-wide drop-shadow-md"
+            >
+                Enlaces <span class="text-[#EF5A5A]">de interés</span>
+            </h2>
+
+            <div
+                id="contenedor-enlaces"
+                class="flex flex-col gap-6 md:gap-8 w-full"
+            >
+                <div
+                    class="flex flex-col md:flex-row gap-6 md:gap-8 lg:w-fit lg:ml-auto"
+                >
+                    <a
+                        href={enlaces[0].href}
+                        class={`reveal-derecha relative w-full md:w-[380px] lg:w-[420px] h-[120px] ${enlaces[0].bg} rounded-[2rem] p-8 group transition-all duration-300 hover:-translate-y-2 shadow-2xl flex items-center`}
+                    >
+                        <p
+                            class="text-white text-[18px] sm:text-[20px] font-medium leading-snug whitespace-pre-line tracking-wide drop-shadow-sm"
+                        >
+                            {enlaces[0].title}
+                        </p>
+                        <div
+                            class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-[#DD6565] transition-colors shadow-md"
+                        >
+                            <svg
+                                class="w-4 h-4 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 17L17 7M17 7v8M17 7H9"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a
+                        href={enlaces[1].href}
+                        class={`reveal-izquierda relative w-full md:w-[380px] lg:w-[420px] h-[120px] ${enlaces[1].bg} rounded-[2rem] p-8 group transition-all duration-300 hover:-translate-y-2 shadow-2xl flex items-center delay-150`}
+                    >
+                        <p
+                            class="text-white text-[18px] sm:text-[20px] font-medium leading-snug whitespace-pre-line tracking-wide drop-shadow-sm"
+                        >
+                            {enlaces[1].title}
+                        </p>
+                        <div
+                            class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-[#DD6565] transition-colors shadow-md"
+                        >
+                            <svg
+                                class="w-4 h-4 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 17L17 7M17 7v8M17 7H9"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div
+                    class="flex flex-col md:flex-row gap-6 md:gap-8 lg:w-fit relative z-10"
+                >
+                    <a
+                        href={enlaces[2].href}
+                        class={`reveal-derecha relative w-full md:w-[380px] lg:w-[420px] h-[120px] ${enlaces[2].bg} rounded-[2rem] p-8 group transition-all duration-300 hover:-translate-y-2 shadow-2xl flex items-center delay-300`}
+                    >
+                        <p
+                            class="text-white text-[18px] sm:text-[20px] font-medium leading-snug whitespace-pre-line tracking-wide drop-shadow-sm"
+                        >
+                            {enlaces[2].title}
+                        </p>
+                        <div
+                            class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-[#DD6565] transition-colors shadow-md"
+                        >
+                            <svg
+                                class="w-4 h-4 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 17L17 7M17 7v8M17 7H9"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a
+                        href={enlaces[3].href}
+                        class={`reveal-izquierda relative w-full md:w-[380px] lg:w-[420px] h-[120px] ${enlaces[3].bg} rounded-[2rem] p-8 group transition-all duration-300 hover:-translate-y-2 shadow-2xl flex items-center delay-[450ms]`}
+                    >
+                        <p
+                            class="text-white text-[18px] sm:text-[20px] font-medium leading-snug whitespace-pre-line tracking-wide drop-shadow-sm"
+                        >
+                            {enlaces[3].title}
+                        </p>
+                        <div
+                            class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-[#DD6565] transition-colors shadow-md"
+                        >
+                            <svg
+                                class="w-4 h-4 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 17L17 7M17 7v8M17 7H9"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estado inicial: ocultos y movidos */
+    .reveal-derecha {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-izquierda {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Cuando el padre tiene la clase .active, animamos los hijos */
+    :global(.active) .reveal-derecha,
+    :global(.active) .reveal-izquierda {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Delays para efecto cascada */
+    .delay-150 {
+        transition-delay: 150ms;
+    }
+    .delay-300 {
+        transition-delay: 300ms;
+    }
+    .delay-\[450ms\] {
+        transition-delay: 450ms;
+    }
+</style>
+
+<script>
+    function setupObserver() {
+        const observerOptions = {
+            threshold: 0.15,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, observerOptions);
+
+        const container = document.getElementById("contenedor-enlaces");
+        if (container) observer.observe(container);
+    }
+
+    // Se ejecuta al cargar y también si usas ViewTransitions de Astro
+    setupObserver();
+    document.addEventListener("astro:after-swap", setupObserver);
+</script>

@@ -1,0 +1,241 @@
+---
+import { Image } from "astro:assets";
+import FabricacionReparacion from "../assets/Servicios/17.png"
+import FabricacionPiping from "../assets/Servicios/18.png"
+import FabricacionCrating from "../assets/Servicios/19.png"
+import FerreteriaIndustrial from "../assets/Servicios/20.png"
+import FabricacionEstanque from "../assets/Servicios/21.png"
+import FabricacionEstructura from "../assets/Servicios/22.png"
+import DiseñoyFabricacion from "../assets/Servicios/23.png"
+import FabricacionPlataforma from "../assets/Servicios/24.png"
+import FabricacionBomba from "../assets/Servicios/25.png"
+import FabricacioLinea from "../assets/Servicios/26.png"
+import ReparacionPlaca from "../assets/Servicios/27.png"
+import Acondicionamiento from "../assets/Servicios/28.png"
+import FabricacionPallet from "../assets/Servicios/29.png"
+import FabricacionLineaInox from "../assets/Servicios/30.png"
+import FabricacionLineaPiping from "../assets/Servicios/31.png"
+import TrabajosFibraVidrio from "../assets/Servicios/32.png"
+import ImgBG from "../assets/bg_Carousel_Servicios.png"
+
+const servicios = [
+  {
+    title: "FABRICACIÓN Y REPARACIÓN DE ESTRUCTURAS Y DUCTOS EN GENERAL",
+    image: FabricacionReparacion,
+  },
+  {
+    title: "FABRICACIÓN DE PIPING",
+    image: FabricacionPiping,
+  },
+  {
+    title: "FABRICACIÓN DE CRATING",
+    image: FabricacionCrating,
+  },
+  {
+    title: "FERRETERIA INDUSTRIAL",
+    image: FerreteriaIndustrial,
+  },
+  {
+    title: "FABRICACIÓN DE ESTANQUE",
+    image: FabricacionEstanque,
+  },
+  {
+    title: "FABRICACION DE ESTRUCTURA SEGÚN PLANO",
+    image: FabricacionEstructura,
+  },
+  {
+    title: "DISEÑO Y FABRICACION DE ESTRUCTURA CON MEMORIA DE CALCULO",
+    image: DiseñoyFabricacion,
+  },
+  {
+    title:"FABRICACIÓN DE PLATAFORMA",
+    image:FabricacionPlataforma,
+  },
+  {
+    title:"FABRICACION DE PROTECCIÓN DE EQUIPO, BOMBA Y CORREAS",
+    image:FabricacionBomba,
+  },
+  {
+    title:"FABRICACIÓN DE LÍNEAS FILTROS",
+    image:FabricacioLinea,
+  },
+  {
+    title:"REPARACIÓN DE CONJUNTO DE PLACA",
+    image: ReparacionPlaca,
+  },
+  {
+    title:"ACONDICIONAMIENTO EQUIPO Y ESTRUCTURAS",
+    image:Acondicionamiento,
+  },
+  {
+    title:"FABRICACIÓN PALLET",
+    image:FabricacionPallet,
+  },
+  {
+    title:"FABRICACIÓN DE LÍNEA EN ACERO INOXIDABLE",
+    image:FabricacionLineaInox,
+  },
+  {
+    title:"FABRICACIÓN LÍNEAS PIPING EN ACERO Y HDPE",
+    image:FabricacionLineaPiping,
+  },
+  {
+    title:"TRABAJOS EN FIBRA DE VIDRIO",
+    image:TrabajosFibraVidrio,
+  },
+
+];
+
+// Duplicamos el array para que el carrusel tenga efecto continuo al rotar
+const carruselItems = [...servicios, ...servicios];
+---
+
+<section class="relative bg-[#111] text-white w-full py-10 overflow-hidden my-8">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0 select-none pointer-events-none">
+    <img src={ImgBG.src} alt="Background" class="w-full h-full object-cover opacity-80" />
+  </div>
+
+  <div class="relative z-10 w-full max-w-[1600px] mx-auto px-4 md:px-12 flex flex-col items-center">
+    <h2 class="text-center text-2xl md:text-3xl font-semibold mb-8">
+      Nuestros <span class="text-[#ff5555]">Servicios</span>
+    </h2>
+
+    <div class="relative flex items-center w-full group">
+      <!-- Botón Izquierda -->
+      <button 
+        id="btn-prev-servicios" 
+        class="absolute left-0 xl:-left-6 bg-transparent text-white p-1 hover:-translate-x-1 hover:scale-110 transition-all cursor-pointer z-20"
+        aria-label="Anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-12 md:w-12 drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- Contenedor del Carrusel -->
+      <div 
+        id="carousel-container-servicios" 
+        class="flex gap-4 md:gap-5 lg:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-5 px-2 scroll-smooth w-full mx-8 md:mx-10"
+        style="scrollbar-width: none; -ms-overflow-style: none;"
+      >
+        {carruselItems.map((servicio) => (
+          <div class="snap-center snap-always shrink-0 w-[80vw] sm:w-[45vw] md:w-[30vw] lg:w-[18vw] xl:w-[16vw] flex flex-col items-center transition-transform hover:-translate-y-1">
+            <!-- Box Image -->
+            <div class="w-full aspect-video bg-gray-900 border-2 border-gray-300 overflow-hidden shadow-2xl relative" style="border-radius: 1px;">
+              <Image 
+                src={servicio.image} 
+                alt={servicio.title} 
+                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+              />
+            </div>
+            <!-- Title -->
+            <p class="mt-4 text-center text-[10px] md:text-xs font-semibold tracking-wider px-1 text-gray-200 uppercase leading-snug" style="max-width: 95%;">
+              {servicio.title}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Botón Derecha -->
+      <button 
+        id="btn-next-servicios" 
+        class="absolute right-0 xl:-right-6 bg-transparent text-white p-1 hover:translate-x-1 hover:scale-110 transition-all cursor-pointer z-20"
+        aria-label="Siguiente"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-12 md:w-12 drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  let isCarouselInitialized = false;
+
+  const initCarousel = () => {
+    if (isCarouselInitialized) return;
+    isCarouselInitialized = true;
+
+    const container = document.getElementById('carousel-container-servicios');
+    const btnPrev = document.getElementById('btn-prev-servicios');
+    const btnNext = document.getElementById('btn-next-servicios');
+
+    if (!container || !btnPrev || !btnNext) return;
+
+    let autoPlayInterval: number;
+
+    const getScrollAmount = () => {
+      const card = container.firstElementChild as HTMLElement;
+      if (!card) return 300;
+      const gap = parseFloat(window.getComputedStyle(container).gap) || 0;
+      return card.offsetWidth + gap;
+    };
+
+    const scrollNext = () => {
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      }
+    };
+
+    const scrollPrev = () => {
+      if (container.scrollLeft <= 10) {
+        container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      }
+    };
+
+    btnNext.addEventListener('click', () => {
+      stopAutoPlay();
+      scrollNext();
+      startAutoPlay();
+    });
+
+    btnPrev.addEventListener('click', () => {
+      stopAutoPlay();
+      scrollPrev();
+      startAutoPlay();
+    });
+
+    // Auto rotativo
+    const startAutoPlay = () => {
+      stopAutoPlay();
+      autoPlayInterval = setInterval(scrollNext, 3000) as unknown as number;
+    };
+
+    const stopAutoPlay = () => {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+    };
+
+    // Pausar al hacer hover
+    container.addEventListener('mouseenter', stopAutoPlay);
+    container.addEventListener('mouseleave', startAutoPlay);
+    btnNext.addEventListener('mouseenter', stopAutoPlay);
+    btnPrev.addEventListener('mouseenter', stopAutoPlay);
+    btnNext.addEventListener('mouseleave', startAutoPlay);
+    btnPrev.addEventListener('mouseleave', startAutoPlay);
+
+    startAutoPlay();
+  };
+
+  document.addEventListener('astro:page-load', () => {
+    isCarouselInitialized = false;
+    initCarousel();
+  });
+  
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initCarousel();
+  } else {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  }
+</script>

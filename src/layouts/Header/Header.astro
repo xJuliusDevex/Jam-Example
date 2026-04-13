@@ -1,0 +1,156 @@
+---
+import bg from "../../assets/bg.jpg";
+import Nav from "./Nav.astro";
+---
+
+<div
+    class="relative w-full overflow-hidden min-h-[74vh] bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${bg.src});`}
+>
+    <Nav />
+    <section
+        class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pb-4 pt-10 lg:pt-16 flex flex-row items-start justify-between gap-4 lg:gap-0"
+    >
+        <div class="max-w-3xl flex-1 min-w-0 pr-2">
+            <div
+                class="flex flex-col items-start gap-1 sm:gap-2 lg:gap-4 w-full"
+            >
+                <h1
+                    class="text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-wide relative break-words leading-tight"
+                >
+                    <span id="type-1" class="typing-text opacity-0"
+                        >BIENVENIDO A</span
+                    >
+                </h1>
+
+                <h1
+                    class="text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#DE5B6D] uppercase tracking-wide relative break-words leading-tight"
+                >
+                    <span id="type-2" class="typing-text opacity-0">JAM</span>
+                </h1>
+            </div>
+
+            <p
+                class="text-white text-sm sm:text-base md:text-2xl font-medium leading-relaxed mt-4 lg:mt-10 drop-shadow-md"
+            >
+                <span id="type-3" class="typing-text opacity-0"
+                    >Prestamos servicios con estándares de calidad a
+                </span><br class="hidden md:block" />
+                <span id="type-4" class="typing-text opacity-0"
+                    >las diferentes empresas de la zona norte del país.</span
+                >
+            </p>
+        </div>
+
+        <!-- Right Side Card -->
+        <div
+            class="relative w-[200px] sm:w-[240px] h-[230px] sm:h-[270px] mt-24 sm:mt-28 md:mt-24 lg:mt-20 xl:mt-24 ml-auto shrink-0 transform scale-90 sm:scale-100 origin-right"
+        >
+            <!-- Background shadow box -->
+            <div
+                class="absolute top-3 bottom-3 -left-3.5 -right-3.5 bg-[#E8E8E8] rounded-2xl z-0"
+            >
+            </div>
+
+            <!-- Main Card -->
+            <div
+                class="absolute inset-0 bg-white rounded-2xl z-10 shadow-2xl p-2 flex flex-col"
+            >
+                <img
+                    src={bg.src}
+                    alt="Trabajador"
+                    class="w-full h-28 object-cover rounded-xl"
+                />
+
+                <h3 class="text-xl font-medium text-black mt-3">
+                    ¿Quienes somos?
+                </h3>
+
+                <div class="flex items-center justify-between mt-auto">
+                    <!-- Pagination dots/bars -->
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2 h-2 rounded-full bg-[#DE5B6D]"></div>
+                        <div class="w-2 h-2 rounded-full bg-[#DE5B6D]"></div>
+                        <div class="w-2 h-2 rounded-full bg-[#DE5B6D]"></div>
+                        <div class="w-6 h-2 rounded-full bg-[#DE5B6D]"></div>
+                        <div class="w-4 h-2 rounded-full bg-[#F4F4F4]"></div>
+                    </div>
+
+                    <!-- Arrow Button -->
+                    <button
+                        class="w-8 h-8 bg-[#F6D2D4] text-[#DE5B6D] rounded-full flex items-center justify-center hover:bg-[#DE5B6D] hover:text-white transition group"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M7 17L17 7M17 7v8M17 7H9"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .typing-cursor::after {
+        content: "|";
+        animation: blink 0.8s step-end infinite;
+        margin-left: 4px;
+        opacity: 0.9;
+        font-weight: 300;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+    // Typing animation logic
+    const typeElements = [
+        document.getElementById("type-1"),
+        document.getElementById("type-2"),
+        document.getElementById("type-3"),
+        document.getElementById("type-4"),
+    ];
+
+    if (typeElements[0]) {
+        const textsToType = typeElements.map((el) => ({
+            element: el,
+            text: el ? el.textContent : "",
+        }));
+
+        textsToType.forEach((item) => {
+            if (item.element) {
+                // Clear text but keep it taking layout height? Actually emptying it works fine
+                item.element.textContent = "";
+                item.element.classList.remove("opacity-0");
+            }
+        });
+
+        async function typeSequence() {
+            for (const item of textsToType) {
+                if (!item.element) continue;
+
+                item.element.classList.add("typing-cursor");
+                for (let i = 0; i < item.text.length; i++) {
+                    item.element.textContent += item.text[i];
+                    await new Promise((r) => setTimeout(r, 45)); // Adjust typing speed here
+                }
+                item.element.classList.remove("typing-cursor");
+            }
+        }
+
+        setTimeout(typeSequence, 200);
+    }
+</script>

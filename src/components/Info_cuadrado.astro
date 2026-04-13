@@ -1,0 +1,123 @@
+---
+import Construccion from "../assets/Especialista/Construccion.png";
+import Mantenimiento from "../assets/Especialista/Mantenimiento.png";
+import Servicios from "../assets/Especialista/Servicio.png";
+import Ingenieria from "../assets/Especialista/Ingenieria.png";
+const bloqueImg = [
+    {
+        title: "Construccion",
+        img: Construccion,
+        text: "CONSTRUCCION Y MONTAJES INDUSTRIALES",
+    },
+    {
+        title: "Mantenimiento",
+        img: Mantenimiento,
+        text: "MANTENIMIENTO INTEGRAL",
+    },
+
+    {
+        title: "Ingenieria",
+        img: Ingenieria,
+        text: "INGENIERIA  Y GESTION DE PROYECTOS",
+    },
+    {
+        title: "Servicios",
+        img: Servicios,
+        text: "SERVICIO DE SOPORTE MINERO",
+    },
+];
+---
+
+<section class="w-full bg-[#F3F3F3] relative z-10">
+    <div
+        class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start overflow-hidden lg:overflow-visible"
+    >
+        <!-- Lado Izquierdo -->
+        <div
+            class="w-full lg:w-[55%] px-4 sm:px-8 py-16 lg:py-20 lg:pr-16 xl:pr-24 lg:pl-12 flex flex-col justify-center opacity-0 -translate-x-16 transition-all duration-1000 ease-out observer-item"
+        >
+            <div class="max-w-xl lg:max-w-none w-full mx-auto lg:mx-0">
+                <h2
+                    class="text-3xl sm:text-4xl lg:text-[42px] font-medium text-[#000000] leading-snug mb-8 tracking-tight"
+                >
+                    Una nueva fuerza en ingeniería <br
+                        class="hidden xl:block"
+                    />
+                    minera e industrial
+                </h2>
+                <div
+                    class="flex flex-col gap-6 text-[16px] sm:text-[17px] text-[#888888] font-normal leading-relaxed"
+                >
+                    <p>
+                        Fundada en 1994, JAMINCOSER es una empresa líder en
+                        servicios de construcción y mantenimiento para la gran
+                        minería del norte de Chile, con operaciones focalizadas
+                        en la Región de Antofagasta.
+                    </p>
+                    <p>
+                        Nuestra trayectoria esta respaldada por clientes
+                        emblemáticos como Minera Escondida (BHP) que mantiene un
+                        contrato anual con nosotros por nuestra respuesta
+                        oportuna a requerimientos y otras operaciones mineras de
+                        clase mundial.
+                    </p>
+                    <p>
+                        En 2014, JAMINCOSER consolido su posición como
+                        contratista estratégico en la industria minera,
+                        ampliando su calidad. Hoy mantenemos la agilidad y
+                        flexibilidad que no caracterizan.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lado Derecho: Especialidades -->
+        <div
+            class="w-full lg:w-[45%] flex flex-col justify-start relative lg:-mt-6 mb-0 pb-12 lg:pb-16 opacity-0 translate-x-16 transition-all duration-1000 delay-300 ease-out observer-item"
+        >
+            <!-- Contenedor del recuadro rojo -->
+            <div
+                class="bg-[#EC5463] text-white px-8 py-8 sm:px-10 lg:px-12 lg:pt-10 lg:pb-20 shadow-lg w-full rounded-none"
+            >
+                <h3 class="text-2xl sm:text-3xl font-semibold mb-8 sm:mb-10">
+                    Especialista en:
+                </h3>
+                <div
+                    class="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-6 sm:gap-y-10"
+                >
+                    {
+                        bloqueImg.map((item) => (
+                            <div class="flex flex-col items-center text-center h-full">
+                                <img
+                                    src={item.img.src}
+                                    alt={item.title}
+                                    class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mb-3 sm:mb-4 text-white opacity-90 shrink-0"
+                                />
+                                <p class="flex-grow flex flex-col justify-start font-semibold text-[10px] sm:text-[13px] lg:text-[14px] leading-snug uppercase tracking-wide border-b border-white/40 pb-3 sm:pb-4 w-full">
+                                    {item.text}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('opacity-0', '-translate-x-16', 'translate-x-16');
+                entry.target.classList.add('opacity-100', 'translate-x-0');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observa todos los elementos de la sección la primera vez que aparecen en pantalla
+    document.querySelectorAll('.observer-item').forEach((el) => {
+        observer.observe(el);
+    });
+</script>
