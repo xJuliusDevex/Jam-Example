@@ -1,6 +1,8 @@
 ---
+import { getLocaleByPath } from "astro:i18n";
 import bg from "../../assets/bg.jpg";
 import Nav from "./Nav.astro";
+const path = Astro.url.pathname;
 ---
 
 <div
