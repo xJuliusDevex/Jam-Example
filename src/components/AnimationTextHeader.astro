@@ -1,0 +1,84 @@
+---
+
+---
+
+<div class="max-w-3xl flex-1 min-w-0 pr-2">
+    <div class="flex flex-col items-start gap-1 sm:gap-2 lg:gap-4 w-full">
+        <h1
+            class="text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-wide relative break-words leading-tight"
+        >
+            <span id="type-1" class="typing-text opacity-0">BIENVENIDO A</span>
+        </h1>
+
+        <h1
+            class="text-2xl min-[400px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#DE5B6D] uppercase tracking-wide relative break-words leading-tight"
+        >
+            <span id="type-2" class="typing-text opacity-0">JAM</span>
+        </h1>
+    </div>
+
+    <p
+        class="text-white text-sm sm:text-base md:text-2xl font-medium leading-relaxed mt-4 lg:mt-10 drop-shadow-md"
+    >
+        <span id="type-3" class="typing-text opacity-0"
+            >Prestamos servicios con estándares de calidad a
+        </span><br class="hidden md:block" />
+        <span id="type-4" class="typing-text opacity-0"
+            >las diferentes empresas de la zona norte del país.</span
+        >
+    </p>
+</div>
+<style>
+    .typing-cursor::after {
+        content: "|";
+        animation: blink 0.8s step-end infinite;
+        margin-left: 4px;
+        opacity: 0.9;
+        font-weight: 300;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+    // Typing animation logic
+    const typeElements = [
+        document.getElementById("type-1"),
+        document.getElementById("type-2"),
+        document.getElementById("type-3"),
+        document.getElementById("type-4"),
+    ];
+
+    if (typeElements[0]) {
+        const textsToType = typeElements.map((el) => ({
+            element: el,
+            text: el ? el.textContent : "",
+        }));
+
+        textsToType.forEach((item) => {
+            if (item.element) {
+                // Clear text but keep it taking layout height? Actually emptying it works fine
+                item.element.textContent = "";
+                item.element.classList.remove("opacity-0");
+            }
+        });
+
+        async function typeSequence() {
+            for (const item of textsToType) {
+                if (!item.element) continue;
+
+                item.element.classList.add("typing-cursor");
+                for (let i = 0; i < item.text.length; i++) {
+                    item.element.textContent += item.text[i];
+                    await new Promise((r) => setTimeout(r, 45)); // Adjust typing speed here
+                }
+                item.element.classList.remove("typing-cursor");
+            }
+        }
+
+        setTimeout(typeSequence, 200);
+    }
+</script>
