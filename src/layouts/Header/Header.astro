@@ -2,9 +2,11 @@
 import Nav from "./Nav.astro";
 import CardNoticias from "../../components/CardNoticias.astro";
 import AnimationTextHeader from "../../components/AnimationTextHeader.astro";
-//Imagenes
+import Imgheader from "../../components/Imgheader.astro";
+// Imagenes
 import Index from "../../assets/page/bg.jpg";
 import QuienesSomos from "../../assets/page/QuienesSomos.png";
+import PoliticaGestionIntegrado from "../../assets/page/PoliticadeGestionIntegrado.png";
 import Organigrama from "../../assets/page/Organigrama.png";
 const path = Astro.url.pathname;
 let bg = "";
@@ -26,7 +28,7 @@ switch (path) {
         breadcrumbTitle = "Organigrama";
         break;
     case "/PoliticaGestionIntegrado":
-        bg = Organigrama.src;
+        bg = PoliticaGestionIntegrado.src;
         title = "POLÍTICA DE GESTIÓN INTEGRADO";
         breadcrumbTitle = "Política de Gestión Integrado";
         break;
@@ -42,7 +44,7 @@ switch (path) {
         const rawPath = path.replace(/\//g, "");
         breadcrumbTitle = rawPath
             ? rawPath.charAt(0).toUpperCase() + rawPath.slice(1).toLowerCase()
-            : "";
+            : " ";
         break;
 }
 
@@ -61,29 +63,7 @@ const isHome = path === "/";
                 <CardNoticias />
             </section>
         ) : (
-            <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center w-full flex-grow pb-32 lg:pb-48 gap-2">
-                <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-black text-center drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] tracking-wide">
-                    {title}
-                </h1>
-                <div class="flex items-center gap-2 text-white text-base md:text-xl font-medium tracking-wide drop-shadow-md mt-5">
-                    <span>JAM</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 md:w-5 md:h-5 text-[#DE5B6D]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="3"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 5l7 7-7 7"
-                        />
-                    </svg>
-                    <span>{breadcrumbTitle}</span>
-                </div>
-            </section>
+            <Imgheader title={title} breadcrumbTitle={breadcrumbTitle} />
         )
     }
 </div>

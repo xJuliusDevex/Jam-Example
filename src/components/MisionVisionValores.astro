@@ -1,0 +1,84 @@
+---
+
+---
+
+<!-- Misión, Visión, Valores -->
+<div
+    id="mvv-container"
+    class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 items-start mt-16 lg:mt-24"
+>
+    <!-- Misión -->
+    <div class="mvv-item flex flex-col opacity-0 translate-y-[50px] transition-all duration-1000 ease-out">
+        <h3
+            class="text-3xl lg:text-4xl font-black text-[#DE5B6D] tracking-tight uppercase text-center mb-6 drop-shadow-sm"
+        >
+            Misión
+        </h3>
+        <p
+            class="text-[#1a1a1a] font-bold text-base lg:text-lg leading-relaxed text-justify"
+        >
+            Apoyar a Minera Escondida Ltda. en sus procesos productivos con
+            calidad, seguridad y protección del medio ambiente.
+        </p>
+    </div>
+
+    <!-- Visión -->
+    <div class="mvv-item flex flex-col opacity-0 translate-y-[50px] transition-all duration-1000 delay-[200ms] ease-out">
+        <h3
+            class="text-3xl lg:text-4xl font-black text-[#DE5B6D] tracking-tight uppercase text-center mb-6 drop-shadow-sm"
+        >
+            Visión
+        </h3>
+        <p
+            class="text-[#1a1a1a] font-bold text-base lg:text-lg leading-relaxed text-justify"
+        >
+            “Ser la Empresa de manufactura de insumos para la minería y obra
+            civiles, líder en el ámbito nacional, siendo reconocidos como
+            Empresa por excelencia y calidad de nuestros servicios, trabajando
+            con ética y profesionalismo”.
+        </p>
+    </div>
+
+    <!-- Valores -->
+    <div class="mvv-item flex flex-col opacity-0 translate-y-[50px] transition-all duration-1000 delay-[400ms] ease-out">
+        <h3
+            class="text-3xl lg:text-4xl font-black text-[#DE5B6D] tracking-tight uppercase text-center mb-6 drop-shadow-sm"
+        >
+            Valores
+        </h3>
+        <p
+            class="text-[#1a1a1a] font-bold text-base lg:text-lg leading-relaxed text-justify"
+        >
+            “Ser la Empresa de manufactura de insumos para la minería y obra
+            civiles, líder en el ámbito nacional, siendo reconocidos como
+            Empresa por excelencia y calidad de nuestros servicios, trabajando
+            con ética y profesionalismo”.
+        </p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("mvv-container");
+        if (!container) return;
+
+        const items = container.querySelectorAll(".mvv-item");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        items.forEach(item => {
+                            item.classList.remove("opacity-0", "translate-y-[50px]");
+                            item.classList.add("opacity-100", "translate-y-0");
+                        });
+                        observer.disconnect(); // Anima solo la primera vez
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        observer.observe(container);
+    });
+</script>

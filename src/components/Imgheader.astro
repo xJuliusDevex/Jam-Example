@@ -1,0 +1,92 @@
+---
+interface Props {
+    title: string;
+    breadcrumbTitle: string;
+}
+const { title, breadcrumbTitle } = Astro.props;
+---
+
+<typewriter-manager>
+    <section
+        class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col items-center justify-center w-full flex-grow pb-32 lg:pb-48 gap-2 pt-8"
+    >
+        <h1
+            class="text-white text-4xl md:text-5xl lg:text-6xl font-black text-center drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)] tracking-wide min-h-[1.2em]"
+        >
+            <span class="type-sequence" data-text={title}></span>
+        </h1>
+        <div
+            class="flex items-center gap-2 text-white text-base md:text-xl font-medium tracking-wide drop-shadow-md mt-5 min-h-[1.5em]"
+        >
+            <span class="type-sequence" data-text="JAM"></span>
+            <svg
+                id="header-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 md:w-5 md:h-5 text-[#DE5B6D] opacity-0 transition-opacity duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span class="type-sequence" data-text={breadcrumbTitle}></span>
+        </div>
+    </section>
+</typewriter-manager>
+
+<script>
+    class TypewriterManager extends HTMLElement {
+        connectedCallback() {
+            const elements = this.querySelectorAll(".type-sequence");
+            const arrow = this.querySelector("#header-arrow");
+            if (elements.length === 0) return;
+
+            let currentElIndex = 0;
+            // Velocidad en milisegundos por letra
+            const speed = 70;
+
+            // Limpiamos los textos inicialmente para evitar parpadeos
+            elements.forEach((el) => (el.textContent = ""));
+
+            const typeNextElement = () => {
+                if (currentElIndex >= elements.length) return;
+
+                const el = elements[currentElIndex];
+                const text = el.getAttribute("data-text") || "";
+                el.textContent = "";
+
+                // Cuando empezamos a escribir el 3er elemento (breadcrumbTitle), mostramos la flecha
+                if (currentElIndex === 2 && arrow) {
+                    arrow.classList.remove("opacity-0");
+                }
+
+                let charIndex = 0;
+
+                const typeChar = () => {
+                    if (charIndex < text.length) {
+                        el.textContent += text.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, speed);
+                    } else {
+                        currentElIndex++;
+                        // Pequeña pausa antes de escribir el siguiente bloque
+                        setTimeout(typeNextElement, 150);
+                    }
+                };
+
+                typeChar();
+            };
+
+            // Iniciar la secuencia completa tras un pequeño retraso
+            setTimeout(typeNextElement, 300);
+        }
+    }
+
+    if (!customElements.get("typewriter-manager")) {
+        customElements.define("typewriter-manager", TypewriterManager);
+    }
+</script>
