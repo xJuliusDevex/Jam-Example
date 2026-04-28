@@ -32,7 +32,6 @@ switch (path) {
         title = "POLÍTICA DE GESTIÓN INTEGRADO";
         breadcrumbTitle = "Política de Gestión Integrado";
         break;
-    case "/contacto":
     case "/Contacto":
         bg = Index.src;
         title = "CONTACTO";
@@ -47,7 +46,6 @@ switch (path) {
             : " ";
         break;
 }
-console.log(path);
 const isHome = path === "/";
 ---
 
@@ -55,6 +53,7 @@ const isHome = path === "/";
     class={`relative w-full overflow-hidden ${isHome ? "min-h-[74vh]" : "min-h-[60vh]"} bg-cover bg-center bg-no-repeat flex flex-col`}
     style={`background-image: url(${bg});`}
 >
+    <p>{path}</p>
     <Nav />
     {
         isHome ? (
