@@ -1,7 +1,132 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import LineaDivisor from "../components/LineaDivisor.astro";
+import { Image } from "astro:assets";
+import bgOrganigrama from "../assets/Organigrama/BgOrganigrama.png";
+import organigramaJam from "../assets/Organigrama/OrganigramaJAM.png";
 ---
 
 <Layout>
-    <p>Organigrama</p>
+    <section class="w-full bg-[#fcfcfc] py-16 lg:py-24 overflow-hidden">
+        <div
+            id="organigrama-intro"
+            class="max-w-5xl mx-auto px-6 lg:px-12 flex flex-col items-center text-center"
+        >
+            <h2
+                class="org-item text-3xl md:text-4xl lg:text-[40px] font-black text-[#DE5B6D] tracking-tight mb-8 drop-shadow-sm opacity-0 translate-y-[50px] transition-all duration-1000 ease-out"
+            >
+                JAM: Construyendo Calidad en Estructuras y Ductos
+            </h2>
+
+            <p
+                class="org-item text-gray-500 font-bold leading-relaxed text-base lg:text-lg text-justify md:text-center mb-6 opacity-0 translate-y-[50px] transition-all duration-1000 delay-[200ms] ease-out"
+            >
+                La empresa JAM Ingeniería, Construcción y Servicio se
+                especializa en la fabricación y reparación de estructuras y
+                ductos en general. Dentro de sus operaciones, destaca el proceso
+                principal de Producción, el cual engloba diversos subprocesos
+                interrelacionados, tales como mecanizado, soldadura, armado de
+                estructuras y pintura. Estos elementos se integran de manera
+                sinérgica para garantizar la eficiencia y calidad en la entrega
+                de productos y servicios.
+            </p>
+
+            <p
+                class="org-item text-gray-500 font-bold leading-relaxed text-base lg:text-lg text-justify md:text-center opacity-0 translate-y-[50px] transition-all duration-1000 delay-[400ms] ease-out"
+            >
+                Además de los procesos centrales, la compañía cuenta con
+                procesos de apoyo esenciales para su funcionamiento integral.
+                Estos incluyen áreas como Administración, Ventas, Adquisiciones,
+                Mantención y Despacho. Estos procesos de apoyo desempeñan un
+                papel clave en el respaldo y la coordinación efectiva de las
+                actividades principales, asegurando un enfoque holístico en la
+                gestión y el éxito operativo de JAM Ingeniería, Construcción y
+                Servicio.
+            </p>
+
+            <div
+                class="org-item w-full opacity-0 translate-y-[50px] transition-all duration-1000 delay-[600ms] ease-out flex justify-center"
+            >
+                <LineaDivisor />
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualización del Organigrama -->
+    <section 
+        id="organigrama-visual"
+        class="relative w-full py-16 lg:py-24 overflow-hidden flex justify-center items-center bg-[#fcfcfc]"
+    >
+        <!-- Imagen de Fondo -->
+        <div 
+            class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-80"
+            style={`background-image: url('${bgOrganigrama.src}');`}
+        ></div>
+        
+        <!-- Capa superpuesta clara para realzar el contraste -->
+        <div class="absolute inset-0 z-0 bg-white/30 backdrop-blur-[1px]"></div>
+
+        <div class="relative z-10 w-full max-w-7xl px-4 md:px-8 lg:px-12 flex flex-col items-center">
+            <div class="w-full flex justify-center org-item-visual opacity-0 translate-y-[60px] scale-95 transition-all duration-[1200ms] ease-out">
+                <Image 
+                    src={organigramaJam} 
+                    alt="Organigrama JAM" 
+                    class="w-full h-auto max-w-[1200px] object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-700 ease-in-out"
+                />
+            </div>
+        </div>
+    </section>
 </Layout>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Observador para la introducción
+        const containerIntro = document.getElementById("organigrama-intro");
+        if (containerIntro) {
+            const itemsIntro = containerIntro.querySelectorAll(".org-item");
+            const observerIntro = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            itemsIntro.forEach((item) => {
+                                item.classList.remove(
+                                    "opacity-0",
+                                    "translate-y-[50px]",
+                                );
+                                item.classList.add("opacity-100", "translate-y-0");
+                            });
+                            observerIntro.disconnect();
+                        }
+                    });
+                },
+                { threshold: 0.15 },
+            );
+            observerIntro.observe(containerIntro);
+        }
+
+        // Observador para la imagen del organigrama
+        const containerVisual = document.getElementById("organigrama-visual");
+        if (containerVisual) {
+            const itemsVisual = containerVisual.querySelectorAll(".org-item-visual");
+            const observerVisual = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            itemsVisual.forEach((item) => {
+                                item.classList.remove(
+                                    "opacity-0",
+                                    "translate-y-[60px]",
+                                    "scale-95"
+                                );
+                                item.classList.add("opacity-100", "translate-y-0", "scale-100");
+                            });
+                            observerVisual.disconnect();
+                        }
+                    });
+                },
+                { threshold: 0.15 },
+            );
+            observerVisual.observe(containerVisual);
+        }
+    });
+</script>
